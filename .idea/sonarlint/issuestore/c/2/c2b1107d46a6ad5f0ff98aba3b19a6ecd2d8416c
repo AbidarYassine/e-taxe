@@ -1,0 +1,8 @@
+
+L
+java:S3740+"/Provide the parametrized type for this generic.(¬®¹±8Ðé·œà/
+h
+java:S6204$"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+X	java:S125,"<This block of commented-out lines of code should be removed.(Çîˆ¿8Šê·œà/
+{
+java:S1488+"^Immediately return this expression instead of assigning it to the temporary variable "result".(¬®¹±8›Ž¸œà/

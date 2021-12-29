@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: local-service
+  labels:
+    app: local-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: local-service
+  template:
+    metadata:
+      labels:
+        app: local-service
+    spec:
+      containers:
+        - name: local-service
+          image: yassineabidar/local:0.0.3
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8061
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: USER_LOGIN
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: USER_PWD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: MYSQL_DATABASE
+            - name: BD_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: BD_URL
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: local-svc
+spec:
+  selector:
+    app: local-service
+  type: ClusterIP
+  ports:
+    - name: local-service-port
+      port: 8061 # port who i run the service
+      targetPort: 8061 # port of container

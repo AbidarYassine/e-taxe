@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+  labels:
+    app: auth-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+        - name: auth-service
+          image: yassineabidar/auth-service:0.0.3
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9090
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: auth-svc
+spec:
+  selector:
+    app: auth-service
+  type: ClusterIP
+  ports:
+    - name: auth-service-port
+      port: 9090 # port who i run the service
+      targetPort: 9090 # port of container
