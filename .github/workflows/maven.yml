@@ -22,4 +22,6 @@ jobs:
         run: chmod +x mvnw
       - name: Run All Test
         run: mvn test
+      - name: Build Project 
+        run: mvn package
 
