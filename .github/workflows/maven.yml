@@ -21,8 +21,6 @@ jobs:
             - run: |
                   java -version
                   echo $JAVA_HOME
-            - run: chmod +x mvnw
+            - run: chmod +x  ./local/mvnw
             - run: ./local/mvnw test
-            - run: ./sejour/mvnw test
-            - run: ./demo_security/mvnw test
             - uses: codecov/codecov-action@v1
