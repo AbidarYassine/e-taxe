@@ -1,0 +1,27 @@
+name: Demo Github Actions
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: local
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: "17"
+          distribution: "adopt"
+          cache: maven
+      - name: Give Permissions to mvnw
+        run: chmod +x mvnw
+      - name: Run All Test
+        run: mvn test
+      - name: Build Project 
+        run: mvn package
+
