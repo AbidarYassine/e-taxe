@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/demo-security/demo-security.iml" filepath="$PROJECT_DIR$/demo-security/demo-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/e-taxe.iml" filepath="$PROJECT_DIR$/.idea/e-taxe.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eurika-server/eurika-server.iml" filepath="$PROJECT_DIR$/eurika-server/eurika-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eurika-server.iml" filepath="$PROJECT_DIR$/eureka-server/eurika-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/local/local.iml" filepath="$PROJECT_DIR$/local/local.iml" />
       <module fileurl="file://$PROJECT_DIR$/reporting-service/reporting-service.iml" filepath="$PROJECT_DIR$/reporting-service/reporting-service.iml" />

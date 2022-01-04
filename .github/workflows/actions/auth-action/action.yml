@@ -1,0 +1,15 @@
+name: Auth  CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        run: echo "Welocme to Auth Service"
+

@@ -5,6 +5,16 @@ spring:
     name: GATEWAY-SERVICE
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PATCH
+              - PUT
       discovery:
         locator:
           enabled: true
@@ -29,7 +39,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+      defaultZone: http://localhost:8761/eureka/
+      #      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+
   instance:
     hostname: eureka-0
     prefer-ip-address: true
