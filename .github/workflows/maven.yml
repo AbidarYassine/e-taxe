@@ -34,19 +34,19 @@ jobs:
     if: ${{ needs.changes.outputs.main == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: actions/checkout@v2
         run: echo "Welocme to Auth Service"
   local:
     needs: changes
     if: ${{ needs.changes.outputs.local == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: actions/checkout@v2
         run: echo "Welocme to Auth Service"
   auth:
     needs: changes
     if: ${{ needs.changes.outputs.auth == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: actions/checkout@v2
         run: echo "Welocme to Auth Service"
