@@ -2,9 +2,8 @@ name: Auth  CI/CD
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - 'demo-security/**'
 
 jobs:
   changes:
