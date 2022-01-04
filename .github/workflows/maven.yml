@@ -28,6 +28,7 @@ jobs:
               - 'local/**'
             auth:
               - 'demo-security/**'
+          ref: ${{ github.ref }}
   main:
     needs: changes
     if: ${{ needs.changes.outputs.main == 'true' }}
