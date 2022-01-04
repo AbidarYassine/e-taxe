@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: eureka
+  labels:
+    app: eureka
+spec:
+  clusterIP: None # this line define a headless service
+  ports:
+    - port: 8761 # port who i run the service
+      name: eureka
+  selector:
+    app: eureka

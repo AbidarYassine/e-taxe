@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taxe-sejour-service
+  labels:
+    app: taxe-sejour-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taxe-sejour-service
+  template:
+    metadata:
+      labels:
+        app: taxe-sejour-service
+    spec:
+      containers:
+        - name: taxe-sejour-service
+          image: yassineabidar/taxe-sejour:0.0.3
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8027
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-sc
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-sc
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-cm
+                  key: POSTGRES_DB
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_URL
+                  name: postgres-cm
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: taxe-sejour-svc
+spec:
+  selector:
+    app: taxe-sejour-service
+  type: ClusterIP
+  ports:
+    - name: taxe-sejour-name
+      port: 8027 # port who i run the service
+      targetPort: 8027 # port of container

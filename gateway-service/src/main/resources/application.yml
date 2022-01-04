@@ -1,0 +1,50 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PATCH
+              - PUT
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /${path}/v3/api-docs
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    urls:
+      - name: taxe-sejour-service
+        url: /taxe-sejour/v1/v3/api-docs/
+      - name: local-service
+        url: /api/local/v1/v3/api-docs/
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      #      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+
+  instance:
+    hostname: eureka-0
+    prefer-ip-address: true
+
+jwt:
+  secret: BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-cm
+data:
+  POSTGRES_DB: taxe_Sejour_db
+  DB_URL: postgres-service

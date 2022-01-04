@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="reporting-service" />
+        <module name="eurika-server" />
+        <module name="demo-security" />
+        <module name="local" />
+        <module name="gateway-service" />
+      </profile>
+      <profile name="Annotation profile for taxe-sejour" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" />
+        </processorPath>
+        <module name="taxe-sejour" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo-security" target="11" />
+      <module name="eurika-server" target="17" />
+      <module name="gateway-service" target="11" />
+      <module name="local" target="17" />
+      <module name="reporting-service" target="17" />
+      <module name="taxe-sejour" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo-security" options="-parameters" />
+      <module name="eurika-server" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
+      <module name="local" options="-parameters" />
+      <module name="reporting-service" options="-parameters" />
+      <module name="taxe-sejour" options="-parameters" />
+    </option>
+  </component>
+</project>

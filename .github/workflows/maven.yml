@@ -1,0 +1,52 @@
+name: E-Taxe CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    #    defaults:
+    #      run:
+    #        working-directory: e-taxe
+    outputs:
+      main: ${{ steps.filter.outputs.main }}
+      local: ${{ steps.filter.outputs.local }}
+      auth: ${{ steps.filter.outputs.auth }}
+    steps:
+      # For pull requests it's not necessary to checkout the code
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            main:
+              - '**'
+            local:
+              - 'local/**'
+            auth:
+              - 'demo-security/**'
+          ref: ${{ github.ref }}
+  main:
+    needs: changes
+    if: ${{ needs.changes.outputs.main == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/main-action
+  local:
+    needs: changes
+    if: ${{ needs.changes.outputs.local == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/local-action
+  auth:
+    needs: changes
+    if: ${{ needs.changes.outputs.auth == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/auth-action
